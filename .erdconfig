@@ -4,7 +4,7 @@ attributes:
   - inheritance
 disconnected: true
 filename: erd
-filetype: pdf
+filetype: dot
 indirect: true
 inheritance: false
 markup: true

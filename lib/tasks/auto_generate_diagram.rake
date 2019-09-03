@@ -5,14 +5,24 @@ if Rails.env.development?
 
   # TMP Fix for Rails 6.
   Rake::Task['erd:load_models'].clear
+  Rake::Task['erd:generate'].clear
 
   namespace :erd do
     task :load_models do
-      say 'Loading application environment...'
       Rake::Task[:environment].invoke
-
-      say 'Loading code in search of Active Record models...'
       Zeitwerk::Loader.eager_load_all
+    end
+
+    task :generate => [:check_dependencies, :options, :load_models] do
+      # say "Generating Entity-Relationship Diagram for #{ActiveRecord::Base.descendants.length} models..."
+
+      require "rails_erd/diagram/graphviz"
+      file = RailsERD::Diagram::Graphviz.create
+
+      system "dot -Tpng #{file} > erd.png"
+      File.delete('erd.dot')
+
+      say "Entity-Relationship Diagram saved to erd.png."
     end
   end
 end
