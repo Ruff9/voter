@@ -1,6 +1,6 @@
 class CreateUsers < ActiveRecord::Migration[6.0]
   def change
-    create_table :users do |t|
+    create_table :admins do |t|
       t.timestamps null: false
       t.string :email, null: false
       t.string :encrypted_password, limit: 128, null: false
@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :remember_token, limit: 128, null: false
     end
 
-    add_index :users, :email
-    add_index :users, :remember_token
+    add_index :admins, :email
+    add_index :admins, :remember_token
   end
 end
