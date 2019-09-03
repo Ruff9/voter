@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_090022) do
+ActiveRecord::Schema.define(version: 2019_09_03_122110) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 2019_09_03_090022) do
     t.index ["remember_token"], name: "index_admins_on_remember_token"
   end
 
+  create_table "ballots", force: :cascade do |t|
+    t.integer "note", null: false
+    t.integer "vote_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["vote_id"], name: "index_ballots_on_vote_id"
+  end
+
   create_table "votes", force: :cascade do |t|
     t.string "question", null: false
     t.integer "admin_id"
@@ -31,5 +39,6 @@ ActiveRecord::Schema.define(version: 2019_09_03_090022) do
     t.index ["admin_id"], name: "index_votes_on_admin_id"
   end
 
+  add_foreign_key "ballots", "votes"
   add_foreign_key "votes", "admins"
 end
