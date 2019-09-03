@@ -14,10 +14,10 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'rspec'
 gem 'clearance'
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'byebug'
 end
 
@@ -29,4 +29,8 @@ group :development do
   gem 'rubocop'
   gem 'guard-rubocop'
   gem 'guard-rspec', require: false
+end
+
+group :test do
+  gem 'shoulda-matchers'
 end

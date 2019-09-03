@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_152929) do
+ActiveRecord::Schema.define(version: 2019_09_03_090022) do
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -23,4 +23,13 @@ ActiveRecord::Schema.define(version: 2019_09_02_152929) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.string "question", null: false
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
+  add_foreign_key "votes", "users"
 end
