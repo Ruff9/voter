@@ -29,6 +29,7 @@ group :development do
   gem 'rubocop'
   gem 'guard-rubocop'
   gem 'guard-rspec', require: false
+  gem 'rails-erd'
 end
 
 group :test do
