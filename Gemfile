@@ -17,8 +17,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'clearance'
 
 group :development, :test do
-  gem 'rspec-rails'
   gem 'byebug'
+  gem 'launchy'
 end
 
 group :development do
@@ -33,5 +33,8 @@ group :development do
 end
 
 group :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'capybara'
   gem 'shoulda-matchers'
 end

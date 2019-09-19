@@ -1,0 +1,12 @@
+<%= form_for @vote, url: votes_path do |form| %>
+  <%= form.hidden_field :admin_id, value: current_user.id %>
+
+  <div class="text-field">
+    <%= form.label :question %>
+    <%= form.text_field :question, id: 'vote-question' %>
+  </div>
+
+  <div class="submit-field">
+    <%= form.submit 'Valider', id: 'new-vote-button' %>
+  </div>
+<% end %>

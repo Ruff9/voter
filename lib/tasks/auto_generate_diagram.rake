@@ -13,16 +13,14 @@ if Rails.env.development?
       Zeitwerk::Loader.eager_load_all
     end
 
-    task :generate => [:check_dependencies, :options, :load_models] do
-      # say "Generating Entity-Relationship Diagram for #{ActiveRecord::Base.descendants.length} models..."
-
-      require "rails_erd/diagram/graphviz"
+    task generate: %i[check_dependencies options load_models] do
+      require 'rails_erd/diagram/graphviz'
       file = RailsERD::Diagram::Graphviz.create
 
       system "dot -Tpng #{file} > erd.png"
       File.delete('erd.dot')
 
-      say "Entity-Relationship Diagram saved to erd.png."
+      say 'Entity-Relationship Diagram saved to erd.png.'
     end
   end
 end
