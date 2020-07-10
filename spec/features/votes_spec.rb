@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'votes', type: :feature do
-  it 'are created by admins', :focus do
+  it 'are created by admins' do
     create :admin, email: 'yolo@test.com', password: 'password'
 
     visit root_path
